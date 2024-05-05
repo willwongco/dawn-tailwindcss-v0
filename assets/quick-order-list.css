@@ -466,15 +466,17 @@ quick-order-list-remove-button:hover .icon-remove {
     padding-left: 5.4rem;
   }
 
-  .quick-order-list__table
-    .quick-order-list__table-heading--wide
-    + .quick-order-list__table-heading--wide {
+  .quick-order-list__table .quick-order-list__table-heading--wide + .quick-order-list__table-heading--wide {
     padding-left: 10rem;
     text-align: right;
   }
 
   .quick-order-list__table td {
     padding-top: 1.6rem;
+  }
+
+  .quick-order-list__table .desktop-row-error td {
+    padding-top: 0;
   }
 
   .quick-order-list__table .desktop-row-error td {
@@ -504,9 +506,7 @@ quick-order-list-remove-button:hover .icon-remove {
   }
 
   .quick-order-list__total-items {
-    width: calc(
-      ((11rem / var(--font-body-scale) + var(--inputs-border-width) * 2))
-    );
+    width: calc(((11rem / var(--font-body-scale) + var(--inputs-border-width) * 2)));
     margin-left: calc(15px + 3.4rem);
     flex-direction: column;
   }
@@ -601,9 +601,7 @@ quick-order-list-remove-button:hover .icon-remove {
     margin-bottom: 2rem;
   }
 
-  .quick-order-list-total__confirmation
-    quick-order-list-remove-all-button
-    button {
+  .quick-order-list-total__confirmation quick-order-list-remove-all-button button {
     margin-top: 1rem;
   }
 

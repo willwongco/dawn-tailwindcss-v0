@@ -9,9 +9,7 @@
   cursor: default;
   width: 100%;
   height: calc(100vh - 100%);
-  height: calc(
-    var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%))
-  );
+  height: calc(var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%)));
   top: 100%;
   left: 0;
   background: rgba(var(--color-foreground), 0.5);
@@ -24,8 +22,7 @@
 menu-drawer > details[open] > summary::before {
   visibility: visible;
   opacity: 1;
-  transition: opacity var(--duration-default) ease,
-    visibility var(--duration-default) ease;
+  transition: opacity var(--duration-default) ease, visibility var(--duration-default) ease;
 }
 
 .menu-drawer {
@@ -40,25 +37,22 @@ menu-drawer > details[open] > summary::before {
   background-color: rgb(var(--color-background));
   overflow-x: hidden;
   filter: drop-shadow(
-    var(--drawer-shadow-horizontal-offset) var(--drawer-shadow-vertical-offset)
-      var(--drawer-shadow-blur-radius)
+    var(--drawer-shadow-horizontal-offset) var(--drawer-shadow-vertical-offset) var(--drawer-shadow-blur-radius)
       rgba(var(--color-shadow), var(--drawer-shadow-opacity))
   );
 }
 
 .js .menu-drawer {
   height: calc(100vh - 100%);
-  height: calc(
-    var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%))
-  );
+  height: calc(var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%)));
 }
 
 .js details[open] > .menu-drawer,
 .js details[open] > .menu-drawer__submenu {
-  transition: transform var(--duration-default) ease,
-    visibility var(--duration-default) ease;
+  transition: transform var(--duration-default) ease, visibility var(--duration-default) ease;
 }
 
+.no-js details[open] > .menu-drawer,
 .js details[open].menu-opening > .menu-drawer,
 details[open].menu-opening > .menu-drawer__submenu {
   transform: translateX(0);
@@ -75,6 +69,10 @@ details[open].menu-opening > .menu-drawer__submenu {
     border-width: 0 var(--drawer-border-width) 0 0;
     border-style: solid;
     border-color: rgba(var(--color-foreground), var(--drawer-border-opacity));
+  }
+
+  .no-js .menu-drawer {
+    height: auto;
   }
 }
 
@@ -101,6 +99,18 @@ details[open].menu-opening > .menu-drawer__submenu {
   overflow-y: auto;
 }
 
+.no-js .menu-drawer__navigation {
+  padding: 0;
+}
+
+.no-js .menu-drawer__navigation > ul > li {
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.04);
+}
+
+.no-js .menu-drawer__submenu ul > li {
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.04);
+}
+
 .js .menu-drawer__menu li {
   margin-bottom: 0.2rem;
 }
@@ -111,8 +121,24 @@ details[open].menu-opening > .menu-drawer__submenu {
   font-size: 1.8rem;
 }
 
+.no-js .menu-drawer__menu-item {
+  font-size: 1.6rem;
+}
+
+.no-js .menu-drawer__submenu .menu-drawer__menu-item {
+  padding: 1.2rem 5.2rem 1.2rem 6rem;
+}
+
+.no-js .menu-drawer__submenu .menu-drawer__submenu .menu-drawer__menu-item {
+  padding-left: 9rem;
+}
+
 .menu-drawer summary.menu-drawer__menu-item {
   padding-right: 5.2rem;
+}
+
+.no-js .menu-drawer__menu-item .icon-caret {
+  right: 3rem;
 }
 
 .menu-drawer__menu-item--active,
@@ -128,7 +154,8 @@ details[open].menu-opening > .menu-drawer__submenu {
   background-color: rgba(var(--color-foreground), 0.08);
 }
 
-.js .menu-drawer__menu-item .icon-caret {
+.js .menu-drawer__menu-item .icon-caret,
+.no-js .menu-drawer .icon-arrow {
   display: none;
 }
 
@@ -169,6 +196,10 @@ details[open].menu-opening > .menu-drawer__submenu {
   text-align: left;
 }
 
+.no-js .menu-drawer__close-button {
+  display: none;
+}
+
 .menu-drawer__close-button .icon-arrow {
   transform: rotate(180deg);
   margin-right: 1rem;
@@ -185,15 +216,13 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 @media screen and (max-width: 749px) {
-  .header--has-account:where(:not(.header--has-social):not(.header--has-localizations))
-    .menu-drawer__utility-links {
+  .header--has-account:where(:not(.header--has-social):not(.header--has-localizations)) .menu-drawer__utility-links {
     padding: 2rem 3rem;
   }
 }
 
 @media screen and (max-width: 989px) {
-  .header--has-localizations:where(:not(.header--has-social))
-    .menu-drawer__utility-links {
+  .header--has-localizations:where(:not(.header--has-social)) .menu-drawer__utility-links {
     padding: 2rem 3rem;
   }
 }
@@ -208,8 +237,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   margin-bottom: 0;
 }
 
-.menu-drawer__utility-links:has(.menu-drawer__localization)
-  .menu-drawer__account {
+.menu-drawer__utility-links:has(.menu-drawer__localization) .menu-drawer__account {
   margin: 0;
 }
 
@@ -219,19 +247,13 @@ details[open].menu-opening > .menu-drawer__submenu {
   margin-right: 1rem;
 }
 
-.menu-drawer__account shop-user-avatar {
-  --shop-avatar-size: 2.4rem;
-  margin-right: 0.55rem;
-  margin-left: -0.45rem;
-}
-
 .menu-drawer__account:hover .icon-account {
   transform: scale(1.07);
 }
 
 .menu-drawer .list-social {
   justify-content: flex-start;
-  margin-left: -1.25rem;
+  margin-left: -1.25rem
 }
 
 .menu-drawer .list-social:empty {
